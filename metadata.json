@@ -1,0 +1,6 @@
+{
+  "name": "Savin Portfolio PRD",
+  "description": "An interactive, human-first portfolio builder and complete PRD viewer based on Savin's resume, GitHub, and LinkedIn profile.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
