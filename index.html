@@ -4,9 +4,74 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Savin D — Personal Portfolio &amp; Spec Blueprint</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100%;
+        background: #030304;
+      }
+
+      #boot-screen {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background: #030304;
+        color: #f1f5f9;
+        font-family: Georgia, serif;
+        transition: opacity 350ms ease, visibility 350ms ease;
+      }
+
+      #boot-screen::before {
+        position: absolute;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        background: #f1f5f9;
+        box-shadow: 0 0 18px #f1f5f9cc, 0 0 42px #00ff6655;
+        clip-path: polygon(50% 0%, 57% 29%, 70% 7%, 67% 35%, 93% 20%, 73% 45%, 100% 50%, 73% 57%, 93% 80%, 67% 65%, 70% 93%, 57% 71%, 50% 100%, 43% 71%, 30% 93%, 33% 65%, 7% 80%, 27% 57%, 0% 50%, 27% 45%, 7% 20%, 33% 35%, 30% 7%, 43% 29%);
+        content: "";
+        animation: boot-sun 2s ease-in-out infinite;
+      }
+
+      #boot-screen span {
+        position: relative;
+        margin-top: 8rem;
+        font-size: clamp(1.4rem, 5vw, 2.2rem);
+        font-weight: 400;
+        font-family: 'Courier New', Courier, monospace;
+        letter-spacing: 0.01em;
+        animation: boot-greeting 700ms ease both;
+      }
+
+      @keyframes boot-sun {
+        50% { transform: scale(1.06) rotate(8deg); }
+      }
+
+      @keyframes boot-greeting {
+        from { opacity: 0; transform: translateY(0.5rem); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #boot-screen,
+        #boot-screen::before,
+        #boot-screen span {
+          animation: none;
+          transition-duration: 1ms;
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
+    <div id="boot-screen" aria-label="Loading portfolio">
+      <span>Slow network... Please wait</span>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

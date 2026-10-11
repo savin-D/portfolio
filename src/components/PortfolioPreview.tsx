@@ -3,11 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { PortfolioState } from "../types";
 import { motion, AnimatePresence } from "motion/react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Github,
   Linkedin,
@@ -48,11 +46,6 @@ import {
   Database,
   Wrench
 } from "lucide-react";
-
-// Register ScrollTrigger safely
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 // Simple typewriter effect for rotating title subtitles
 function TypewriterEffect() {
@@ -210,6 +203,8 @@ Link: https://github.com/savin-D/hungry-hub
               src={new URL("../assets/images/developer_portrait_1780408571569.jpg", import.meta.url).href}
               alt="Savin D portrait"
               referrerPolicy="no-referrer"
+              loading="lazy"
+              decoding="async"
               className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover border border-slate-700/40 shadow-lg transform group-hover:scale-[1.02] transition-transform duration-300"
             />
           </div>
@@ -831,7 +826,7 @@ Link: https://github.com/savin-D/hungry-hub
                     src={new URL("../assets/images/developer_portrait_1780408571569.jpg", import.meta.url).href}
                     alt="Savin D Portrait"
                     referrerPolicy="no-referrer"
-                    className="w-full h-auto aspect-square object-cover object-center grayscale hover:grayscale-0 transition-all duration-500 transform group-hover:scale-[1.03]"
+                    className="w-full h-auto aspect-square object-cover object-center grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-500 transform group-hover:scale-[1.03]"
                   />
                   {/* Subtle caption indicator */}
                   <div className="absolute bottom-0 inset-x-0 bg-slate-950/90 border-t border-slate-850/60 p-2 text-center font-mono text-[9px] text-slate-400">
@@ -844,7 +839,7 @@ Link: https://github.com/savin-D/hungry-hub
         </section>
 
         {/* Core Showcase Grid with visual Project Mockups */}
-        <section id="work" className="max-w-7xl mx-auto w-full px-6 sm:px-12 py-8 sm:py-12 space-y-12 sm:space-y-14 relative z-10 border-t border-white/[0.04]">
+        <section id="work" className="portfolio-section max-w-7xl mx-auto w-full px-6 sm:px-12 py-8 sm:py-12 space-y-12 sm:space-y-14 relative z-10 border-t border-white/[0.04]">
           <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/[0.04] pb-4">
             <div>
               <h2 className="font-display font-extrabold text-2xl text-white tracking-tight">
@@ -895,6 +890,8 @@ Link: https://github.com/savin-D/hungry-hub
                       src={proj.imageUrl} 
                       alt={proj.name}
                       referrerPolicy="no-referrer"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     />
                   ) : (
@@ -943,7 +940,7 @@ Link: https://github.com/savin-D/hungry-hub
         </section>
 
         {/* Interactive Skills Section */}
-        <section id="skills" className="max-w-7xl mx-auto w-full px-6 sm:px-12 py-8 sm:py-12 space-y-12 sm:space-y-14 relative z-10 border-t border-white/[0.04]">
+        <section id="skills" className="portfolio-section max-w-7xl mx-auto w-full px-6 sm:px-12 py-8 sm:py-12 space-y-12 sm:space-y-14 relative z-10 border-t border-white/[0.04]">
           <motion.div 
             initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1133,7 +1130,7 @@ Link: https://github.com/savin-D/hungry-hub
         </section>
 
         {/* Professional Experience Block */}
-        <section id="experience" className="max-w-7xl mx-auto w-full px-6 sm:px-12 py-8 sm:py-12 space-y-12 relative z-10 border-t border-white/[0.04]">
+        <section id="experience" className="portfolio-section max-w-7xl mx-auto w-full px-6 sm:px-12 py-8 sm:py-12 space-y-12 relative z-10 border-t border-white/[0.04]">
           <motion.div 
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1195,7 +1192,7 @@ Link: https://github.com/savin-D/hungry-hub
         </section>
 
         {/* Certificates & Achievements Block */}
-        <section id="certificates" className="max-w-7xl mx-auto w-full px-6 sm:px-12 py-8 sm:py-12 space-y-12 relative z-10 border-t border-white/[0.04]">
+        <section id="certificates" className="portfolio-section max-w-7xl mx-auto w-full px-6 sm:px-12 py-8 sm:py-12 space-y-12 relative z-10 border-t border-white/[0.04]">
           <motion.div 
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1289,6 +1286,8 @@ Link: https://github.com/savin-D/hungry-hub
                         src={cert.imageUrl} 
                         alt={cert.title}
                         referrerPolicy="no-referrer"
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
                       />
                       {/* Technical scanner visual accent overlay */}
